@@ -12,7 +12,7 @@ function JobDetails() {
 
     loadJob();
 
-  }, []);
+  }, [id]);
 
   const loadJob = async () => {
 
