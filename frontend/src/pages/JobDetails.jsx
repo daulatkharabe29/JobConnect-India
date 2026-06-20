@@ -8,29 +8,14 @@ function JobDetails() {
 
   const [job, setJob] = useState(null);
 
-  useEffect(() => {
-
-    loadJob();
-
-  }, [id]);
-
-  const loadJob = async () => {
-
-    try {
-
-      const res = await axios.get(
-        `http://localhost:5000/api/jobs/${id}`
-      );
-
+ useEffect(() => {
+  axios
+    .get(`http://localhost:5000/api/jobs/${id}`)
+    .then((res) => {
       setJob(res.data);
-
-    } catch (err) {
-
-      console.log(err);
-
-    }
-
-  };
+    })
+    .catch((err) => console.log(err));
+}, [id]);
 
   if (!job) {
 
